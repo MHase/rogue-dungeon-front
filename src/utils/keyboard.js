@@ -14,7 +14,6 @@ class PlayerKeyboard {
     // 40: true | down arrow
     // so we have to disable every other input exept arrows
     this.cursors = scene.input.keyboard.createCursorKeys();
-    scene.input.keyboard.enabled = true;
     this.keyboard = scene.input.keyboard;
     scene.input.keyboard.removeKey(16);
 
