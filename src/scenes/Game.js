@@ -27,6 +27,7 @@ export default class extends Phaser.Scene {
 
 
     socket.on('move', (data) => {
+      console.log('lets move', data);
       data.move_time && this.animateMove(data);
     });
 
@@ -41,11 +42,11 @@ export default class extends Phaser.Scene {
 
     socket.on('self_joined', (player) => {
       console.log('self_joined', player);
-      this.addMainPlayer(player);
+      !this.player && this.addMainPlayer(player);
     });
     //
     socket.on('fly', (data) => {
-      console.log(data);
+      console.log('fly', data);
       this.animateMove(data, false, true);
     });
 
@@ -54,8 +55,9 @@ export default class extends Phaser.Scene {
     // });
     //
     socket.on('fire', (data) => {
-      data.username && this.player.name !== data.username
-        && this.getPlayerFromGroup(data.username).fireCat(true);
+      // data.username && this.player && this.player.name !== data.username
+      //   && this.getPlayerFromGroup(data.username).fireCat(true);
+      this.getPlayerFromGroup(data.username).fireCat(true);
     });
     //
     socket.on('turn', (data) => {
@@ -256,14 +258,18 @@ export default class extends Phaser.Scene {
 
   animateMove(data, lost = false, push = false) {
     const movingPlayer = this.getPlayerFromGroup(data.name);
+    console.log(movingPlayer === this.player);
 
-    if (this.player.name === data.name) {
+    if (this.player && this.player.name === data.name) {
       this.player.move_time = data.move_time;
     }
 
-    if (lost && this.player.name === data.name) {
-      setTimeout(() => this.rebirthTimer(data.name), 3000);
+    if (lost && this.player && movingPlayer.name === this.player.name) {
+      this.player = null;
     }
+    // if (lost && this.player.name === data.name) {
+    //   setTimeout(() => this.rebirthTimer(data.name), 3000);
+    // }
 
     let direction = '';
 
@@ -352,11 +358,11 @@ export default class extends Phaser.Scene {
     movingPlayer.playAnimation();
   }
 
-  rebirthTimer(username) {
-    // TODO: Add timer text and rebirth after that time
-    console.log(username);
-    socket.emit('join');
-  }
+  // rebirthTimer(username) {
+  //   // TODO: Add timer text and rebirth after that time
+  //   console.log(username);
+  //   socket.emit('join');
+  // }
 
   colorFromString(string, saturation = 1.0) {
     const hsv = Phaser.Display.Color.HSVColorWheel(saturation);
