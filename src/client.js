@@ -16,8 +16,12 @@ import name from './utils/names';
 //   presences = Presence.syncDiff(presences, diff);
 // });
 
+// require('dotenv').config();
+//
+// console.log(process.env);
+
 const socket = io.connect(
-  'http://localhost:8081/',
+  'https://rogue-dungeon-backend.herokuapp.com/', // we don't need any port, because heroku will redirect me to specific address
   { query: `name=${name}` },
   {
     transports: ['websocket'],
