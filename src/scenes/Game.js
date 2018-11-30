@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import socket from '../client';
 import Player from '../sprites/Player';
 import makeAnimations from '../utils/animations';
+import '../utils/leaderboard';
 
 export default class extends Phaser.Scene {
   constructor() {
