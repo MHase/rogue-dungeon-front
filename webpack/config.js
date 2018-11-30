@@ -10,7 +10,7 @@ const dirNode = path.join(__dirname, '../node_modules')
 const dirApp = path.join(__dirname, '../src')
 const dirAssets = path.join(__dirname, '../assets')
 
-const appHtmlTitle = 'FEAR!'
+const appHtmlTitle = 'Rogue Earth'
 
 /**
  * Webpack Configuration
@@ -29,9 +29,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      IS_DEV: IS_DEV,
-      'CANVAS_RENDERER': JSON.stringify(true),
-      'WEBGL_RENDERER': JSON.stringify(true)
+      IS_DEV,
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true),
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../index.ejs'),
@@ -113,6 +113,9 @@ module.exports = {
         }
       },
     ]
+  },
+  node: {
+    fs: 'empty',
   },
   optimization: {
     splitChunks: {
