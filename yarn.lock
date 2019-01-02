@@ -5968,9 +5968,9 @@ phantomjs-prebuilt@^2.1.10:
     request-progress "^2.0.1"
     which "^1.2.10"
 
-"phaser@git+https://git@github.com/kelostrada/phaser.git":
-  version "3.12.0-beta1"
-  resolved "git+https://git@github.com/kelostrada/phaser.git#264c82fbcbef8125499c1ba98c9a0c7dbb533cd6"
+phaser@^3.15.1:
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.15.1.tgz#17d41fb5b310fb062952e29d9bb26a99c90d3a44"
   dependencies:
     eventemitter3 "^3.1.0"
 
