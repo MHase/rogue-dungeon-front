@@ -14,8 +14,14 @@ body {
   box-sizing: inherit;
 }
 
-#fear-game {
+.container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+}
+
+#fear-game {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
