@@ -1,12 +1,22 @@
 // Apply a natural box layout model to all elements
 // but allowing components to change
 // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-html {
+html,
+body {
   box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+#fear-game {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -68,7 +68,7 @@ module.exports = {
       },
       // CSS / SASS
       {
-        test: /\.scss/,
+        test: /\.scss$/,
         include: dirAssets,
         exclude: dirNode,
         use: [

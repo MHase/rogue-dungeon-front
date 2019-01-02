@@ -1,16 +1,13 @@
 import Phaser from 'phaser';
 import { Boot, Game } from './scenes';
-// import 'utils/leaderboard'
+import '../assets/styles/index.scss';
 
 const config = {
   type: Phaser.AUTO,
   parent: 'fear-game',
-  // width: 272,
-  // height: 272,
-  width: 1000,
-  height: 1000,
+  width: 400,
+  height: 400,
   pixelArt: true,
-  zoom: 1.5,
   antialias: false,
   physics: {
     default: 'arcade',
